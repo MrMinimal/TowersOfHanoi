@@ -12,5 +12,7 @@ public class MainGame {
 		model 		= new GameModel(settings);
 		//view 		= new GameView();
 		//controller	= new GameController(model, view);
+		
+		model.moveDisks(0, 1);
 	}
 }

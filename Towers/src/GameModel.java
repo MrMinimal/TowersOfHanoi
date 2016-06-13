@@ -20,18 +20,32 @@ public class GameModel {
 		for (int i = 0; i < rodNumber; i++) {
 			this.rods.add(new Stack());
 		}
-		
+
 		fillFirstRod();
 	}
-	
-	// fills the first rod with disks, according to the settings passed in the constructor
-	private void fillFirstRod(){
-		
-		for (int i = 0; i < settings.getTotalDisks(); i++){
-			DiskColor 	color 		= new DiskColor(255, 0, 0);
-			Disk 		disk 		= new Disk(5, color);			// TODO: remove hard coded radius	
-			
-			this.rods.get(0).push(disk); 				
+
+	// fills the first rod with disks, according to the settings passed in the
+	// constructor
+	private void fillFirstRod() {
+
+		for (int i = 0; i < settings.getTotalDisks(); i++) {
+			DiskColor color = new DiskColor(255, 0, 0);
+			Disk disk = new Disk(5, color); // TODO: remove hard coded radius
+
+			this.rods.get(0).push(disk);
 		}
+	}
+
+	// TODO: throw exception in case a rod id empty
+	public void moveDisks(int from, int to) {
+		Stack<Disk> originRod = this.rods.get(from); // from which rod a disk is
+														// removed
+		Stack<Disk> destiRod = this.rods.get(to); // to which rod a disk is
+													// moved to
+
+		// temporarily store the removed disk
+		Disk removedDisk = originRod.pop();
+
+		destiRod.push(removedDisk);
 	}
 }
