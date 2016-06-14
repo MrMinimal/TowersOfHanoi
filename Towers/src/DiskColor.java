@@ -7,7 +7,7 @@ public class DiskColor {
 	
 	private DiskColor()
 	{
-		System.err.println("default constructor should never be called");
+		System.err.println("DiskColor's default constructor should never be called");
 	}
 	
 	public DiskColor(int r, int g, int b, float a)
