@@ -3,8 +3,8 @@
 // a GameObject with set settings
 public abstract class GameModeCreator{
 	
-	private final static int DISKINDEX = 0;			// at which position in the arguments the "disk amount" is expected
-	private final static int MINDISKAMOUNT = 4;
+	private final static int DISK_INDEX = 0;			// at which position in the arguments the "disk amount" is expected
+	private final static int MIN_DISKAMOUNT = 4;
 	
 	private GameModeCreator() {
 		System.err.println("GameModeCreators default constructor should never be called");
@@ -22,7 +22,7 @@ public abstract class GameModeCreator{
 			String value = settings[i];
 			
 			// parse disk number
-			if (i == DISKINDEX){
+			if (i == DISK_INDEX){
 				try{
 					// try to check whether a disk amount was passed, stays at default value, if none was passed
 					totalDisks = Integer.parseInt(settings[i]);
@@ -45,8 +45,8 @@ public abstract class GameModeCreator{
 		}
 		
 		// requirement for the application
-		if (totalDisks < MINDISKAMOUNT){
-			totalDisks = MINDISKAMOUNT;
+		if (totalDisks < MIN_DISKAMOUNT){
+			totalDisks = MIN_DISKAMOUNT;
 		}
 		
 		// holds all settings parsed
