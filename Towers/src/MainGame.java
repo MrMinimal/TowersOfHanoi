@@ -10,7 +10,7 @@ public class MainGame {
 		//GameController 	controller;		// Handles the interaction between the data and the GUI
 		
 		model 			= new GameModel(settings);
-		view 			= new GameView(600, 800);				// TODO: remove hard coded window size
+		view 			= new GameView(600, 800, 3);				// TODO: remove hard coded window size and rod count
 		//controller	= new GameController(model, view);
 		
 		// New comment

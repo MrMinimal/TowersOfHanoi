@@ -3,11 +3,11 @@ import java.util.Stack;
 
 // class which holds all relevant data for the game
 public class GameModel {
-	private static final int ROD_AMOUNT = 3;
+	private static final int ROD_COUNT = 3;
 
 	private Settings settings;
 
-	private ArrayList<Stack<Disk>> rods = new ArrayList<Stack<Disk>>(ROD_AMOUNT);
+	private ArrayList<Stack<Disk>> rods = new ArrayList<Stack<Disk>>(ROD_COUNT);
 
 	private GameModel() {
 		System.err.println("GameModel's constructor should never be called!");
@@ -17,7 +17,7 @@ public class GameModel {
 		this.settings = settings;
 
 		// add rods to the list
-		for (int i = 0; i < ROD_AMOUNT; i++) {
+		for (int i = 0; i < ROD_COUNT; i++) {
 			this.rods.add(new Stack());
 		}
 
