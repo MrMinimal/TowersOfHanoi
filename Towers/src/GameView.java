@@ -61,10 +61,17 @@ public class GameView {
 	}
 	
 	// draw a disk on the display the next time it is painted
+	// Every consecutive call is interpreted as another disk added on top.
+	// To start over, call resetView() and add tasks again
 	public void drawDisk(int rodIndex, Disk disk){
 		
 		DrawDiskTask task = new DrawDiskTask(disk.getRadius(), disk.getColor());
 		displayPanel.addDrawTask(rodIndex, task);
+	}
+	
+	public void resetView()
+	{
+		this.displayPanel.flushDrawTasks();
 	}
 	
 	// manually apply changes to UI
