@@ -6,7 +6,7 @@ public class GameModel {
 	
 	private Settings settings;
 
-	private ArrayList<Stack<Disk>> rods = new ArrayList<Stack<Disk>>(ROD_COUNT);
+	private ArrayList<Stack<Disk>> rods;
 
 	private GameModel() {
 		System.err.println("GameModel's constructor should never be called!");
@@ -15,6 +15,8 @@ public class GameModel {
 	public GameModel(Settings settings) {
 		this.settings = settings;
 
+		this.rods = new ArrayList<Stack<Disk>>( settings.getRodCount() );
+		
 		// add rods to the list
 		for (int i = 0; i < settings.getRodCount(); i++) {
 			this.rods.add(new Stack<Disk>());
@@ -29,7 +31,7 @@ public class GameModel {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
 			DiskColor color = new DiskColor(255, 0, 0);		// TODO: randomize color
-			Disk disk = new Disk(5, color); 				// TODO: remove hard coded radius
+			Disk disk = new Disk(0.5f, color); 				// TODO: remove hard coded radius
 
 			this.rods.get(0).push(disk);
 		}

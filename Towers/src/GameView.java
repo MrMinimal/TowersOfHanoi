@@ -17,15 +17,17 @@ public class GameView {
 	private ButtonPanel	buttonPanel;
 	
 	private int rodCount;
+	private int maxDiskAmount;
 	
 	private GameView()
 	{
 		System.err.println("GameViews's constructor should never be called!");
 	}
 	
-	public GameView(int windowWidth, int windowHeight, int rodCount)
+	public GameView(int windowWidth, int windowHeight, int rodCount, int maxDiskAmount)
 	{
 		this.rodCount = rodCount;
+		this.maxDiskAmount = maxDiskAmount;
 		
 		this.mainFrame = new JFrame("Towers of Hanoi");
 		this.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +45,7 @@ public class GameView {
 		// add display
 		int displayDesiredHeight = (int)(DISPLAY_HEIGHT * windowHeight);
 		
-		this.displayPanel = new DisplayPanel(3);
+		this.displayPanel = new DisplayPanel(this.rodCount, this.maxDiskAmount);
 		this.displayPanel.setPreferredSize(new Dimension(0, displayDesiredHeight));
 		
 		this.mainFrame.getContentPane().add(this.displayPanel, BorderLayout.PAGE_START);
@@ -56,5 +58,12 @@ public class GameView {
 		this.buttonPanel = new ButtonPanel();
 		this.buttonPanel.setPreferredSize(new Dimension(0, (int)(windowHeight * BUTTONPANEL_HEIGHT) ));
 		this.mainFrame.add(this.buttonPanel, BorderLayout.PAGE_END);
+	}
+	
+	// draw a disk on the display the next time it is painted
+	public void drawDisk(int rodIndex, Disk disk){
+		
+		DrawDiskTask task = new DrawDiskTask(disk.getRadius(), disk.getColor());
+		displayPanel.addDrawTask(rodIndex, task);
 	}
 }

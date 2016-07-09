@@ -1,7 +1,7 @@
 
 public class Disk {
-	private float radius;
 	
+	private float radius;
 	private DiskColor color; 
 	
 	private Disk()
@@ -12,5 +12,13 @@ public class Disk {
 	public Disk(float radius, DiskColor color){
 		this.radius = radius;
 		this.color 	= color;
+	}
+
+	public float getRadius() {
+		return radius;
+	}
+
+	public DiskColor getColor() {
+		return color;
 	}
 }

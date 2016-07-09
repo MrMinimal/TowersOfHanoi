@@ -10,11 +10,14 @@ public class MainGame {
 		//GameController 	controller;		// Handles the interaction between the data and the GUI
 		
 		model 			= new GameModel(settings);
-		view 			= new GameView(600, 800, 3);				// TODO: remove hard coded window size and rod count
+		view 			= new GameView(600, 800, settings.getRodCount(), settings.getTotalDisks());				// TODO: remove hard coded window size and rod count
 		//controller	= new GameController(model, view);
 		
-		// New comment
 		model.moveDisks(0, 1);
+		
+		// TODO: remove debug disks
+		view.drawDisk(0, new Disk(0.5f, new DiskColor(255,  0, 0)));
+		view.drawDisk(0, new Disk(0.5f, new DiskColor(255,  0, 0)));
 		
 		System.out.println("ich bin eine Biene");
 	}
