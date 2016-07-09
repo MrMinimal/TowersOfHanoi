@@ -25,11 +25,11 @@ public class Settings {
 		this.stepDelay = stepDelay;
 	}
 
-	public static int getWindowheight() {
+	public static int getWindowHeight() {
 		return windowHeight;
 	}
 
-	public static int getWindowwidth() {
+	public static int getWindowWidth() {
 		return windowWidth;
 	}
 
