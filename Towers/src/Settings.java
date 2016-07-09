@@ -6,6 +6,8 @@ public class Settings {
 		INTERACTIVE
 	}
 	
+	private static final int ROD_COUNT = 3;				// for now only 3, could potentially set more via settings
+	
 	private InteractionMode mode;
 	private int totalDisks;
 	private int stepDelay;
@@ -20,6 +22,10 @@ public class Settings {
 		this.stepDelay = stepDelay;
 	}
 
+	public int getRodCount(){
+		return ROD_COUNT;
+	}
+	
 	public InteractionMode getMode() {
 		return mode;
 	}

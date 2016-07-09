@@ -3,8 +3,7 @@ import java.util.Stack;
 
 // class which holds all relevant data for the game
 public class GameModel {
-	private static final int ROD_COUNT = 3;
-
+	
 	private Settings settings;
 
 	private ArrayList<Stack<Disk>> rods = new ArrayList<Stack<Disk>>(ROD_COUNT);
@@ -17,8 +16,8 @@ public class GameModel {
 		this.settings = settings;
 
 		// add rods to the list
-		for (int i = 0; i < ROD_COUNT; i++) {
-			this.rods.add(new Stack());
+		for (int i = 0; i < settings.getRodCount(); i++) {
+			this.rods.add(new Stack<Disk>());
 		}
 
 		fillFirstRod();
@@ -29,8 +28,8 @@ public class GameModel {
 	private void fillFirstRod() {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
-			DiskColor color = new DiskColor(255, 0, 0);	// TODO: randomze the color
-			Disk disk = new Disk(5, color); // TODO: remove hard coded radius
+			DiskColor color = new DiskColor(255, 0, 0);		// TODO: randomize color
+			Disk disk = new Disk(5, color); 				// TODO: remove hard coded radius
 
 			this.rods.get(0).push(disk);
 		}
