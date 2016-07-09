@@ -51,8 +51,9 @@ public class DisplayPanel extends JPanel {
 			int rodWidth = (int)(this.getWidth() * ROD_WIDTH);
 			int rodHeight = (int)(this.getHeight() * ROD_HEIGHT);
 			
-			int rodOffsetX = getWidth() / (this.rodCount + 1);
-			int rodPosX = (rodOffsetX * i) - (int)(ROD_WIDTH / 2);
+			int rodOffsetX = getWidth() / this.rodCount;
+			
+			int rodPosX = (int)( (rodOffsetX * i) - (rodWidth / 2) - (rodOffsetX / 2) );
 			int rodPosY = (this.getHeight() - rodHeight) - baseHeight;
 		
 			g.setColor(Color.BLACK);
@@ -66,10 +67,13 @@ public class DisplayPanel extends JPanel {
 				int diskWidthPx = (int)(this.getWidth() * 0.2f);
 				int diskHeightPx = (int)(this.getHeight() * diskHeight);
 				
-				int diskPosX = (int)(rodOffsetX - (diskWidthPx / 2) );
+				int diskPosX = (int)((rodOffsetX * i) - (diskWidthPx / 2) - (rodOffsetX / 2));
 				int diskPosY = (int)(this.getHeight() - baseHeight - (diskHeightPx * j));
 				
-				g.setColor(Color.BLUE); 			// TODO: remove debug color
+				DiskColor diskColor = task.getColor();
+				Color finalColor = new Color(diskColor.getR(), diskColor.getG(), diskColor.getB());
+				g.setColor(finalColor);
+				
 				g.fillRect(diskPosX, diskPosY, diskWidthPx, diskHeightPx);		// TODO: remove hard width
 			}
 		}

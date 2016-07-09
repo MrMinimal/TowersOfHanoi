@@ -3,6 +3,7 @@ public class DiskColor {
 	private int r;
 	private int g;
 	private int b;
+
 	private float a;		// transparency, value between 0.0f and 1.0f
 	
 	private DiskColor()
@@ -28,5 +29,21 @@ public class DiskColor {
 		
 		// set transparency
 		this.a = 1.0f;
+	}
+	
+	public int getR() {
+		return r;
+	}
+
+	public int getG() {
+		return g;
+	}
+
+	public int getB() {
+		return b;
+	}
+
+	public float getA() {
+		return a;
 	}
 }

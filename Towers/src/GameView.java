@@ -66,4 +66,10 @@ public class GameView {
 		DrawDiskTask task = new DrawDiskTask(disk.getRadius(), disk.getColor());
 		displayPanel.addDrawTask(rodIndex, task);
 	}
+	
+	// manually apply changes to UI
+	public void updateView()
+	{
+		this.displayPanel.repaint();
+	}
 }
