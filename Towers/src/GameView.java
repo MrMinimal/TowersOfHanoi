@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 // Is responsible for displaying the game
 public class GameView {
@@ -78,5 +79,11 @@ public class GameView {
 	public void updateView()
 	{
 		this.displayPanel.repaint();
+	}
+	
+	// Display popup dialog
+	public void showError(String message)
+	{
+		JOptionPane.showMessageDialog(this.mainFrame, message, "Towers of Hanoi", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

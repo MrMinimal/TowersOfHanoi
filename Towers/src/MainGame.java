@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 
 public class MainGame {
 	
@@ -19,10 +20,12 @@ public class MainGame {
 		view.drawDisk(0, new Disk(0.5f, new DiskColor(200,  0, 0)));
 		view.drawDisk(0, new Disk(0.5f, new DiskColor(0,  255, 0)));
 		view.drawDisk(0, new Disk(0.5f, new DiskColor(0,  0, 255)));
-		view.drawDisk(1, new Disk(0.5f, new DiskColor(0,  0, 255)));	
+		view.drawDisk(1, new Disk(0.5f, new DiskColor(0,  0, 255)));
 		view.drawDisk(2, new Disk(0.5f, new DiskColor(0,  255, 0)));
 		view.drawDisk(2, new Disk(0.5f, new DiskColor(255,  0, 0)));
 		
+		view.showError("OMG WTF BBQ");
+		
 		System.out.println("ich bin eine Biene");
-	}
+    }
 }

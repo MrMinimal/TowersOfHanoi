@@ -11,6 +11,7 @@ public class DisplayPanel extends JPanel {
 	private static final float ROD_WIDTH = 0.02f;		// percentage based, e.g. 0.3f is 30% of the panels width
 	private static final float ROD_HEIGHT = 0.8f;		// percentage based, e.g. 0.3f is 30% of the panels height
 	private static final float BASE_HEIGHT = 0.04f;		// percentage based, e.g. 0.3f is 30% of the panels height
+	private static final float DISK_BEVEL = 0.3f;		// percentage based, e.g. 0.3f is 30% of the disks width
 	
 	private int rodCount;
 	private float diskHeight;					// max height a disk can have in order to fit all of them onto one rod
@@ -55,7 +56,7 @@ public class DisplayPanel extends JPanel {
 			
 			int rodPosX = (int)( (rodOffsetX * i) - (rodWidth / 2) - (rodOffsetX / 2) );
 			int rodPosY = (this.getHeight() - rodHeight) - baseHeight;
-		
+			
 			g.setColor(Color.BLACK);
 			g.fillRect(rodPosX, rodPosY, rodWidth, rodHeight );
 			
@@ -70,11 +71,13 @@ public class DisplayPanel extends JPanel {
 				int diskPosX = (int)((rodOffsetX * i) - (diskWidthPx / 2) - (rodOffsetX / 2));
 				int diskPosY = (int)(this.getHeight() - baseHeight - (diskHeightPx * j));
 				
+				int diskBevel = (int)(diskWidthPx * DISK_BEVEL);
+				
 				DiskColor diskColor = task.getColor();
 				Color finalColor = new Color(diskColor.getR(), diskColor.getG(), diskColor.getB());
 				g.setColor(finalColor);
 				
-				g.fillRect(diskPosX, diskPosY, diskWidthPx, diskHeightPx);		// TODO: remove hard width
+				g.fillRoundRect(diskPosX, diskPosY, diskWidthPx, diskHeightPx, diskBevel, diskBevel);
 			}
 		}
 	}
