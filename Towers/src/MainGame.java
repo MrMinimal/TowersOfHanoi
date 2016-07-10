@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 
 public class MainGame {
@@ -17,12 +19,14 @@ public class MainGame {
 		model.moveDisks(0, 1);
 		
 		// TODO: remove debug disks
-		view.drawDisk(0, new Disk(0.5f, new DiskColor(200,  0, 0)));
-		view.drawDisk(0, new Disk(0.5f, new DiskColor(0,  255, 0)));
-		view.drawDisk(0, new Disk(0.5f, new DiskColor(0,  0, 255)));
-		view.drawDisk(1, new Disk(0.5f, new DiskColor(0,  0, 255)));
-		view.drawDisk(2, new Disk(0.5f, new DiskColor(0,  255, 0)));
-		view.drawDisk(2, new Disk(0.5f, new DiskColor(255,  0, 0)));
+		Random rnd = new Random();
+		
+		view.drawDisk(0, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
+		view.drawDisk(0, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
+		view.drawDisk(0, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
+		view.drawDisk(1, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
+		view.drawDisk(2, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
+		view.drawDisk(2, new Disk(0.5f, new DiskColor(rnd.nextInt(256),  rnd.nextInt(256), rnd.nextInt(256))));
 		
 		view.showError("OMG WTF BBQ");
 		

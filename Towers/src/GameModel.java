@@ -30,7 +30,7 @@ public class GameModel {
 	private void fillFirstRod() {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
-			DiskColor color = new DiskColor(255, 0, 0);		// TODO: randomize color
+			DiskColor color = new DiskColor();				// TODO: randomize color
 			Disk disk = new Disk(0.5f, color); 				// TODO: remove hard coded radius
 
 			this.rods.get(0).push(disk);

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 // holds colors in RGB, can contain a value for alpha transparency
 public class DiskColor {
 	private int r;
@@ -6,9 +8,13 @@ public class DiskColor {
 
 	private float a;		// transparency, value between 0.0f and 1.0f
 	
-	private DiskColor()
+	public DiskColor()
 	{
-		System.err.println("DiskColor's default constructor should never be called");
+		Random rnd = new Random();
+		
+		this.r = rnd.nextInt(256);
+		this.g = rnd.nextInt(256);
+		this.b = rnd.nextInt(256);
 	}
 	
 	public DiskColor(int r, int g, int b, float a)
