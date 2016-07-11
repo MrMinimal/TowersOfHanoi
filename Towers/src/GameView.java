@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ public class GameView {
 	private static float BUTTONPANEL_HEIGHT = 0.05f;	// percentage based, e.g. 0.3f is 30% of the mainFrames height
 	
 	private JFrame mainFrame;
+	
+	private GameController controller;
 	
 	private DisplayPanel displayPanel;
 	private SelectionPanel selectionPanel;
@@ -58,7 +61,7 @@ public class GameView {
 		this.mainFrame.add(this.selectionPanel, BorderLayout.CENTER);
 		
 		// add buttons
-		this.buttonPanel = new ButtonPanel();
+		this.buttonPanel = new ButtonPanel(this);
 		this.buttonPanel.setPreferredSize(new Dimension(0, (int)(windowHeight * BUTTONPANEL_HEIGHT) ));
 		this.mainFrame.add(this.buttonPanel, BorderLayout.PAGE_END);
 	}
@@ -97,5 +100,17 @@ public class GameView {
 	public int getSelectedToButton()
 	{
 		return selectionPanel.getSelectedToButton();
+	}
+
+	public void assignController(GameController controller) {
+		this.controller = controller;
+	}
+
+	public void commi1tButtonEvent(ActionEvent event) {
+		// TODO tell controller to do shit
+	}
+
+	public void resetButtonEvent(ActionEvent event) {
+		// TODO Auto-generated method stub
 	}
 }
