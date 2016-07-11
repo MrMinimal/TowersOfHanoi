@@ -2,8 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 
 // Is responsible for displaying the game
 public class GameView {
@@ -85,5 +87,15 @@ public class GameView {
 	public void showError(String message)
 	{
 		JOptionPane.showMessageDialog(this.mainFrame, message, "Towers of Hanoi", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public int getSelectedFromButton()
+	{
+		return selectionPanel.getSelectedFromButton();
+	}
+	
+	public int getSelectedToButton()
+	{
+		return selectionPanel.getSelectedToButton();
 	}
 }

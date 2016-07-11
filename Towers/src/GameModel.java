@@ -30,8 +30,8 @@ public class GameModel {
 	private void fillFirstRod() {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
-			DiskColor color = new DiskColor();				// TODO: randomize color
-			Disk disk = new Disk(0.5f, color); 				// TODO: remove hard coded radius
+			DiskColor color = new DiskColor();	
+			Disk disk = new Disk(settings.getTotalDisks() -i, color);
 
 			this.rods.get(0).push(disk);
 		}
@@ -47,5 +47,27 @@ public class GameModel {
 		Disk removedDisk = originRod.pop();
 
 		destiRod.push(removedDisk);
+	}
+	
+	public void moveDisks(Stack<Disk> rod1, Stack<Disk> rod2)
+	{
+		Stack<Disk> originRod = rod1; 	// from which rod a disk is removed
+		
+		Stack<Disk> destiRod = rod2; 		// to which rod a disk is moved to
+
+		// temporarily store the removed disk
+		Disk removedDisk = originRod.pop();
+
+		destiRod.push(removedDisk);
+	}
+	
+	public Settings getSettings()
+	{
+		return settings;
+	}
+	
+	public ArrayList<Stack<Disk>> getRods()
+	{
+		return rods;
 	}
 }
