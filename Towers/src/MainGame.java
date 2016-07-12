@@ -12,8 +12,10 @@ public class MainGame {
 		GameView 		view;			// Displays the data if the controller tells it to
 		GameController 	controller;		// Handles the interaction between the data and the GUI
 		
+		boolean isAutoPlayMode = (settings.getMode() == Settings.InteractionMode.AUTOPLAY);
+		
 		model 			= new GameModel(settings);
-		view 			= new GameView(settings.getWindowHeight(), settings.getWindowWidth(), settings.getRodCount(), settings.getTotalDisks());				// TODO: remove hard coded window size and rod count
+		view 			= new GameView(isAutoPlayMode, settings.getWindowHeight(), settings.getWindowWidth(), settings.getRodCount(), settings.getTotalDisks());				// TODO: remove hard coded window size and rod count
 		controller		= new GameController(model, view);	
 		
 		view.assignController(controller);

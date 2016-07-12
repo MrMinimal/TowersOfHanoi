@@ -9,6 +9,8 @@ public class GameController {
 	
 	private boolean isMoving;
 	
+	private AutoplaySolve solver;
+	
 	private GameController()
 	{
 	 System.err.println("GameController's constructor should never be called!");
@@ -22,9 +24,7 @@ public class GameController {
 		
 		if(gameModel.getSettings().getMode() == Settings.InteractionMode.AUTOPLAY)
 		{
-			gameView.disableInteraction();
-			
-			new AutoplaySolve(this, isMoving);
+			//gameView.disableInteraction();
 		}
 	}
 	
@@ -113,6 +113,13 @@ public class GameController {
 	
 	public void reset()
 	{
+		if (solver != null)
+		{
+			solver.stop();
+			
+			solver = null;
+		}
+		
 		gameModel.reset();
 		refresh();
 	}
@@ -130,5 +137,12 @@ public class GameController {
 	public ArrayList<Stack<Disk>> getRods()
 	{
 		return gameModel.getRods();
+	}
+
+	public void startAutoplay() {
+		if (solver == null)
+		{
+			solver = new AutoplaySolve(this, isMoving);
+		}
 	}
 }

@@ -21,7 +21,9 @@ public class GameView {
 	private DisplayPanel displayPanel;
 	private SelectionPanel selectionPanel;
 	private ButtonPanel	buttonPanel;
+	private AutoPanel autoPanel;
 	
+	private boolean isAutoPlayMode;
 	private int rodCount;
 	private int maxDiskAmount;
 	
@@ -30,8 +32,9 @@ public class GameView {
 		System.err.println("GameViews's constructor should never be called!");
 	}
 	
-	public GameView(int windowWidth, int windowHeight, int rodCount, int maxDiskAmount)
+	public GameView(boolean isAutoplayMode, int windowWidth, int windowHeight, int rodCount, int maxDiskAmount)
 	{
+		this.isAutoPlayMode = isAutoplayMode;
 		this.rodCount = rodCount;
 		this.maxDiskAmount = maxDiskAmount;
 		
@@ -56,14 +59,23 @@ public class GameView {
 		
 		this.mainFrame.getContentPane().add(this.displayPanel, BorderLayout.PAGE_START);
 		
-		// add selection
-		this.selectionPanel = new SelectionPanel(this.rodCount);
-		this.mainFrame.add(this.selectionPanel, BorderLayout.CENTER);
-		
-		// add buttons
-		this.buttonPanel = new ButtonPanel(this);
-		this.buttonPanel.setPreferredSize(new Dimension(0, (int)(windowHeight * BUTTONPANEL_HEIGHT) ));
-		this.mainFrame.add(this.buttonPanel, BorderLayout.PAGE_END);
+		if (isAutoPlayMode)
+		{
+			this.autoPanel = new AutoPanel(this);
+			this.autoPanel.setPreferredSize(new Dimension(0, (int)(windowHeight * BUTTONPANEL_HEIGHT) ));
+			this.mainFrame.add(this.autoPanel, BorderLayout.PAGE_END);
+		}
+		else
+		{
+			// add selection
+			this.selectionPanel = new SelectionPanel(this.rodCount);
+			this.mainFrame.add(this.selectionPanel, BorderLayout.CENTER);
+			
+			// add buttons
+			this.buttonPanel = new ButtonPanel(this);
+			this.buttonPanel.setPreferredSize(new Dimension(0, (int)(windowHeight * BUTTONPANEL_HEIGHT) ));
+			this.mainFrame.add(this.buttonPanel, BorderLayout.PAGE_END);
+		}
 	}
 	
 	// draw a disk on the display the next time it is painted
@@ -119,5 +131,9 @@ public class GameView {
 	public void disableInteraction() {
 		buttonPanel.setVisible(false);
 		selectionPanel.setVisible(false);
+	}
+
+	public void startButtonEvent(ActionEvent event) {
+		controller.startAutoplay();
 	}
 }
