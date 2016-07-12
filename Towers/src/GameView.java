@@ -115,4 +115,9 @@ public class GameView {
 		// TODO Auto-generated method stub
 		controller.reset();
 	}
+
+	public void disableInteraction() {
+		buttonPanel.setVisible(false);
+		selectionPanel.setVisible(false);
+	}
 }

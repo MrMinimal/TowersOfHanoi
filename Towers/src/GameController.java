@@ -22,6 +22,8 @@ public class GameController {
 		
 		if(gameModel.getSettings().getMode() == Settings.InteractionMode.AUTOPLAY)
 		{
+			gameView.disableInteraction();
+			
 			new AutoplaySolve(this, isMoving);
 		}
 	}
