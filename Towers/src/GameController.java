@@ -19,16 +19,11 @@ public class GameController {
 		this.gameModel = gameModel;
 		this.gameView = gameView;
 		init();
-		/*if(gameModel.getSettings().getMode().equals(gameModel.getSettings().getMode().AUTOPLAY))
-		{
-			isMoving = true;
-			int disks = getSettings().getTotalDisks();
-			Stack<Disk> rod1 = getRods().get(0);
-			Stack<Disk> rod2 = getRods().get(1);
-			Stack<Disk> rod3 = getRods().get(2);
-			new AutoplaySolve(this, isMoving);
-		}*/
 		
+		if(gameModel.getSettings().getMode() == Settings.InteractionMode.AUTOPLAY)
+		{
+			new AutoplaySolve(this, isMoving);
+		}
 	}
 	
 	public void interactiveSolve(int from, int to)

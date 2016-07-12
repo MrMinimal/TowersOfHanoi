@@ -13,7 +13,7 @@ public abstract class GameModeCreator{
 	// Returns all the settings input via the parameters of the main application
 	public static Settings parseSettings(String[] settings){
 		int totalDisks 					= 0;		// not zero in case a disk amount was passed
-		int delay 						= 0;		// not zero in case a delay was passed
+		int delay 						= 1;		// default value one second unless set otherwise via arguments
 		Settings.InteractionMode mode 	= Settings.InteractionMode.INTERACTIVE;
 		
 		// iterate over arguments
