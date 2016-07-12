@@ -33,6 +33,19 @@ public class GameController {
 	
 	public void interactiveSolve(int from, int to)
 	{
+		// sanity checks
+		if (from < 0) 
+		{
+			gameView.showError("Please select a rod to move from!");
+			return;
+		}
+		
+		if (to < 0) 
+		{
+			gameView.showError("Please select a rod to!");
+			return;
+		}
+		
 		Stack<Disk> fromRod = getRods().get(from);
 		Stack<Disk> toRod = getRods().get(to);
 		validate(fromRod,toRod);
