@@ -45,15 +45,26 @@ public class GameController {
 		if(rod1.isEmpty())
 		{
 			gameView.showError("There are no disks at that rod for moving!");
-		}else if(!rod2.isEmpty())
+			return;
+		}
+		
+		if(rod2.isEmpty())
 		{
-			if(!rod2.isEmpty() && rod1.peek().getRadius() > rod2.peek().getRadius() )
+			// No radius comparison needed
+			gameModel.moveDisks(rod1, rod2);
+			refresh();
+		}
+		else
+		{
+			if(rod1.peek().getRadius() > rod2.peek().getRadius() )
 			{
-			gameView.showError("The disk is bigger than the disk of the destination rod!");
+				gameView.showError("The disk is bigger than the disk of the destination rod!");
 			}
-		}else{
-		gameModel.moveDisks(rod1, rod2);
-		refresh();
+			else
+			{
+				gameModel.moveDisks(rod1, rod2);
+				refresh();
+			}
 		}
 	}
 	
@@ -92,16 +103,20 @@ public class GameController {
 	
 	public void reset()
 	{
-		
+		gameModel.reset();
+		refresh();
 	}
+	
 	public void moveDisks(Stack<Disk> rod1, Stack<Disk> rod2)
 	{
 		gameModel.moveDisks(rod1, rod2);
 	}
+	
 	public Settings getSettings()
 	{
 		return gameModel.getSettings();
 	}
+	
 	public ArrayList<Stack<Disk>> getRods()
 	{
 		return gameModel.getRods();

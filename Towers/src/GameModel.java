@@ -38,6 +38,32 @@ public class GameModel {
 			this.rods.get(0).push(disk);
 		}
 	}
+	
+	public void reset()
+	{
+		if (rods.isEmpty())
+		{
+			return;
+		}
+		
+		ArrayList<Disk> allDisks = new ArrayList<Disk>(settings.getTotalDisks());
+		
+		for (Stack<Disk> rod : rods)
+		{
+			while (!rod.isEmpty())
+			{
+				allDisks.add(rod.pop());
+			}
+		}
+		
+		allDisks.sort(new DiskSizeComperator());
+		
+		for (int i = allDisks.size() - 1; i >= 0; i--) {
+			Disk disk = allDisks.remove(i);
+			
+			this.rods.get(0).push(disk);
+		}
+	}
 
 	// TODO: throw exception in case a rod is empty
 	public void moveDisks(int from, int to) {
