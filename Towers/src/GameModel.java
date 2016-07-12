@@ -31,7 +31,9 @@ public class GameModel {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
 			DiskColor color = new DiskColor();	
-			Disk disk = new Disk(settings.getTotalDisks() - i, color);			// TODO: make radius percentage based
+			
+			float widthInPercent = (float)i / settings.getTotalDisks();
+			Disk disk = new Disk(1.0f - widthInPercent, color);
 
 			this.rods.get(0).push(disk);
 		}

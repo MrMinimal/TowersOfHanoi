@@ -12,6 +12,7 @@ public class DisplayPanel extends JPanel {
 	private static final float ROD_HEIGHT = 0.8f;		// percentage based, e.g. 0.3f is 30% of the panels height
 	private static final float BASE_HEIGHT = 0.04f;		// percentage based, e.g. 0.3f is 30% of the panels height
 	private static final float DISK_BEVEL = 0.3f;		// percentage based, e.g. 0.3f is 30% of the disks width
+	private static final float DISK_WIDTH = 0.2f;		// percentage based, e.g. 0.3f is 30% of the panels width
 	
 	private int rodCount;
 	private float diskHeight;					// max height a disk can have in order to fit all of them onto one rod
@@ -65,7 +66,7 @@ public class DisplayPanel extends JPanel {
 			{
 				DrawDiskTask task = (DrawDiskTask)this.rods.get(i - 1).get(j - 1);
 				
-				int diskWidthPx = (int)(this.getWidth() * 0.2f);
+				int diskWidthPx = (int)(this.getWidth() * DISK_WIDTH * task.getRadius());
 				int diskHeightPx = (int)(this.getHeight() * diskHeight);
 				
 				int diskPosX = (int)((rodOffsetX * i) - (diskWidthPx / 2) - (rodOffsetX / 2));

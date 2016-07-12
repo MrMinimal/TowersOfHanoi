@@ -18,7 +18,7 @@ public class MainGame {
 		
 		view.assignController(controller);
 		
-		model.moveDisks(0, 1);
+		//model.moveDisks(0, 1);
 		
 		// TODO: remove debug disks
 		Random rnd = new Random();

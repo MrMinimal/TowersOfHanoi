@@ -108,9 +108,11 @@ public class GameView {
 
 	public void commi1tButtonEvent(ActionEvent event) {
 		// TODO tell controller to do shit
+		controller.interactiveSolve(getSelectedFromButton(),getSelectedToButton());
 	}
 
 	public void resetButtonEvent(ActionEvent event) {
 		// TODO Auto-generated method stub
+		controller.reset();
 	}
 }
