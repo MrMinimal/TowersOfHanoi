@@ -78,6 +78,10 @@ public class GameView {
 		}
 	}
 	
+	public void assignController(GameController controller) {
+		this.controller = controller;
+	}
+	
 	// draw a disk on the display the next time it is painted
 	// Every consecutive call is interpreted as another disk added on top.
 	// To start over, call resetView() and add tasks again
@@ -113,9 +117,15 @@ public class GameView {
 	{
 		return selectionPanel.getSelectedToButton();
 	}
-
-	public void assignController(GameController controller) {
-		this.controller = controller;
+	
+	public void incrementStepCount()
+	{
+		displayPanel.incrementStepCount();
+	}
+	
+	public void resetStepCount()
+	{
+		displayPanel.resetStepCount();
 	}
 
 	public void commi1tButtonEvent(ActionEvent event) {
@@ -126,11 +136,6 @@ public class GameView {
 	public void resetButtonEvent(ActionEvent event) {
 		// TODO Auto-generated method stub
 		controller.reset();
-	}
-
-	public void disableInteraction() {
-		buttonPanel.setVisible(false);
-		selectionPanel.setVisible(false);
 	}
 
 	public void startButtonEvent(ActionEvent event) {

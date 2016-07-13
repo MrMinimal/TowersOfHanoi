@@ -5,21 +5,29 @@ import javax.swing.JPanel;
 
 public class AutoPanel extends JPanel {
 	
+	private static final String AUTO_HELP_TEXT 			= 	"Press \"Start\" to make the game solve itself \n"		+
+															"Press \"Reset\" to stop the game and start anew \n";
+													
 	private GameView view;
+	private boolean isAutoPlayMode;
 	
 	public AutoPanel(GameView view) {
 		super();
 		
 		this.view = view;
+		this.isAutoPlayMode = isAutoPlayMode;
 		
-		JButton startAutoplay = new JButton("Start");
-		JButton resetAutoplay = new JButton("Reset");
+		JButton startAutoplayBtn = new JButton("Start");
+		JButton resetAutoplayBtn = new JButton("Reset");
+		JButton helpBtn 	= new JButton("Help");
 		
-		startAutoplay.addActionListener(this::startEvent);
-		resetAutoplay.addActionListener(this::resetEvent);
+		startAutoplayBtn.addActionListener(this::startEvent);
+		resetAutoplayBtn.addActionListener(this::resetEvent);
+		helpBtn.addActionListener(this::helpEvent);
 		
-		this.add(startAutoplay);
-		this.add(resetAutoplay);
+		this.add(startAutoplayBtn);
+		this.add(resetAutoplayBtn);
+		this.add(helpBtn);
 	}
 	
 	private void startEvent(ActionEvent event)
@@ -30,5 +38,10 @@ public class AutoPanel extends JPanel {
 	private void resetEvent(ActionEvent event)
 	{
 		view.resetButtonEvent(event);
+	}
+	
+	private void helpEvent(ActionEvent event)
+	{		
+		view.showError(AUTO_HELP_TEXT);
 	}
 }

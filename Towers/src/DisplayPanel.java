@@ -14,6 +14,11 @@ public class DisplayPanel extends JPanel {
 	private static final float DISK_BEVEL = 0.3f;		// percentage based, e.g. 0.3f is 30% of the disks width
 	private static final float DISK_WIDTH = 0.2f;		// percentage based, e.g. 0.3f is 30% of the panels width
 	
+	private static final int COUNTER_OFFSET_X = 10;
+	private static final int COUNTER_OFFSET_Y = 20;
+	
+	private int stepCount;
+	
 	private int rodCount;
 	private float diskHeight;					// max height a disk can have in order to fit all of them onto one rod
 	
@@ -81,6 +86,10 @@ public class DisplayPanel extends JPanel {
 				g.fillRoundRect(diskPosX, diskPosY, diskWidthPx, diskHeightPx, diskBevel, diskBevel);
 			}
 		}
+		
+		// draw step counter
+		g.setColor(Color.BLACK);
+		g.drawString("Total steps: " + this.stepCount, COUNTER_OFFSET_X, COUNTER_OFFSET_Y);
 	}
 	
 	// add tasks which will be drawn the next time the paint method is called
@@ -95,5 +104,15 @@ public class DisplayPanel extends JPanel {
 		{
 			rod.clear();
 		}
+	}
+	
+	public void incrementStepCount()
+	{
+		this.stepCount++;
+	}
+	
+	public void resetStepCount()
+	{
+		this.stepCount = 0;
 	}
 }

@@ -61,7 +61,7 @@ public class GameController {
 		if(rod2.isEmpty())
 		{
 			// No radius comparison needed
-			gameModel.moveDisks(rod1, rod2);
+			this.moveDisks(rod1, rod2);
 			refresh();
 		}
 		else
@@ -72,7 +72,7 @@ public class GameController {
 			}
 			else
 			{
-				gameModel.moveDisks(rod1, rod2);
+				this.moveDisks(rod1, rod2);
 				refresh();
 			}
 		}
@@ -121,12 +121,14 @@ public class GameController {
 		}
 		
 		gameModel.reset();
+		gameView.resetStepCount();
 		refresh();
 	}
 	
 	public void moveDisks(Stack<Disk> rod1, Stack<Disk> rod2)
 	{
 		gameModel.moveDisks(rod1, rod2);
+		gameView.incrementStepCount();
 	}
 	
 	public Settings getSettings()
