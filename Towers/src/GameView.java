@@ -27,11 +27,23 @@ public class GameView {
 	private int rodCount;
 	private int maxDiskAmount;
 	
+	/**
+	 * Constructor without parameters should never be called.
+	 */
 	private GameView()
 	{
 		System.err.println("GameViews's constructor should never be called!");
 	}
 	
+	/**
+	 * Creates a view object for the MVC model.
+	 * 
+	 * @param isAutoplayMode	Indicates whether the user is allowed to move disks or an algorithm solves the problem
+	 * @param windowWidth		Width of the window in pixels
+	 * @param windowHeight		Height of the window in pixels
+	 * @param rodCount			Number of rods the view is supposed to display
+	 * @param maxDiskAmount		Maximum number of disks which can be in the game at a time
+	 */
 	public GameView(boolean isAutoplayMode, int windowWidth, int windowHeight, int rodCount, int maxDiskAmount)
 	{
 		this.isAutoPlayMode = isAutoplayMode;
@@ -50,6 +62,12 @@ public class GameView {
 		this.mainFrame.setVisible(true);
 	}
 
+	/**
+	 * Add all panels of the view to the main frame, including buttons and game visualization
+	 * 
+	 * @param windowWidth	Width of the window in pixels
+	 * @param windowHeight	Height of the window in pixels
+	 */
 	private void fillContents(int windowWidth, int windowHeight) {
 		// add display
 		int displayDesiredHeight = (int)(DISPLAY_HEIGHT * windowHeight);
@@ -78,19 +96,34 @@ public class GameView {
 		}
 	}
 	
+	/**
+	 * Assigns the controller of the MVC design to the view.
+	 * Is only needed for the callbacks the the controller, in case a user presses a button.
+	 * 
+	 * @param controller	the controller of the MVC design
+	 * @see GameController
+	 */
 	public void assignController(GameController controller) {
 		this.controller = controller;
 	}
 	
-	// draw a disk on the display the next time it is painted
-	// Every consecutive call is interpreted as another disk added on top.
-	// To start over, call resetView() and add tasks again
+	/**
+	 * Draws a disk on the display, the next time it is painted.
+	 * Every consecutive call is interpreted as another disk added on top.
+	 * To start over, call resetView() and add tasks again.
+	 * 
+	 * @param rodIndex
+	 * @param disk
+	 */
 	public void drawDisk(int rodIndex, Disk disk){
 		
 		DrawDiskTask task = new DrawDiskTask(disk.getRadius(), disk.getColor());
 		displayPanel.addDrawTask(rodIndex, task);
 	}
 	
+	/**
+	 * 
+	 */
 	public void resetView()
 	{
 		this.displayPanel.flushDrawTasks();

@@ -2,13 +2,17 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Saves the settings passed via command line into a Settings object.
+ * Instantiates the Model View Controller objects and assigns the references they have with each other.
+ */
 public class MainGame {
 	
 	public static void main(String[] args) {
 		Settings settings = GameModeCreator.parseSettings(args);
 		
 		// MVC Objects	
-		GameModel 		model;			// Holds the necessary data for the game
+		GameModel 		model;
 		GameView 		view;			// Displays the data if the controller tells it to
 		GameController 	controller;		// Handles the interaction between the data and the GUI
 		
@@ -18,6 +22,7 @@ public class MainGame {
 		view 			= new GameView(isAutoPlayMode, settings.getWindowHeight(), settings.getWindowWidth(), settings.getRodCount(), settings.getTotalDisks());				// TODO: remove hard coded window size and rod count
 		controller		= new GameController(model, view);	
 		
+		// view needs a reference to the controller for the Button pressed callbacks to it
 		view.assignController(controller);
     }
 }

@@ -1,17 +1,33 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-// class which holds all relevant data for the game
+/**
+ * Holds the rods and the disks as well as their respective position.
+ * Is the Model part of the MVC design.
+ * 
+ * @author MrMinimal
+ *
+ */
 public class GameModel {
-	
+
 	private Settings settings;
 
 	private ArrayList<Stack<Disk>> rods;
 
+	/**
+	 * Constructor without parameters should never be called.
+	 */
 	private GameModel() {
-		System.err.println("GameModel's constructor should never be called!");
+		System.err.println("GameModel's parameterless constructor should never be called!");
 	}
 
+	/**
+	 * Creates the model according to the passed settings.
+	 * Fills the first rod of the game with the amount of disks specified by the settings.
+	 * 
+	 * @param settings Data passed via command line arguments.
+	 * @see Settings
+	 */
 	public GameModel(Settings settings) {
 		this.settings = settings;
 
@@ -25,8 +41,10 @@ public class GameModel {
 		fillFirstRod();
 	}
 
-	// fills the first rod with disks, according to the settings passed in the
-	// constructor
+	/**
+	 * Fills the first rod with disks, according to the settings passed to the constructor.
+	 * Every disk gets a randomized color, on initiation. 
+	 */
 	private void fillFirstRod() {
 
 		for (int i = 0; i < settings.getTotalDisks(); i++) {
@@ -39,6 +57,9 @@ public class GameModel {
 		}
 	}
 	
+	/** 
+	 * Resets the game data to its original state before any user interaction happened.
+	 */
 	public void reset()
 	{
 		if (rods.isEmpty())
@@ -64,36 +85,36 @@ public class GameModel {
 			this.rods.get(0).push(disk);
 		}
 	}
-
-	// TODO: throw exception in case a rod is empty
-	public void moveDisks(int from, int to) {
-		Stack<Disk> originRod = this.rods.get(from); 	// from which rod a disk is removed
-														
-		Stack<Disk> destiRod = this.rods.get(to); 		// to which rod a disk is moved to
-
-		// temporarily store the removed disk
-		Disk removedDisk = originRod.pop();
-
-		destiRod.push(removedDisk);
-	}
 	
-	public void moveDisks(Stack<Disk> rod1, Stack<Disk> rod2)
+	/**
+	 * Moves the top disk from one rod to another.
+	 * 
+	 * @param originRod 	The rod from which the top most disk is to be removed from
+	 * @param destiRod 		The rod to which the disk is moved to
+	 */
+	public void moveDisks(Stack<Disk> originRod, Stack<Disk> destiRod)
 	{
-		Stack<Disk> originRod = rod1; 	// from which rod a disk is removed
-		
-		Stack<Disk> destiRod = rod2; 		// to which rod a disk is moved to
-
 		// temporarily store the removed disk
 		Disk removedDisk = originRod.pop();
 
 		destiRod.push(removedDisk);
 	}
 	
+	/**
+	 * Gets the settings of the game.
+	 * 
+	 * @return settings Set by the command line arguments
+	 */
 	public Settings getSettings()
 	{
 		return settings;
 	}
 	
+	/**
+	 * Gets all the rods.
+	 * 
+	 * @return A list of all the rods, starting with the left most one
+	 */
 	public ArrayList<Stack<Disk>> getRods()
 	{
 		return rods;
