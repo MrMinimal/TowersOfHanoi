@@ -1,6 +1,10 @@
 
-// Provides a static method to parse the applications parameters in order to retrieve
-// a GameObject with set settings
+/**
+ * Provides a static method to pass the command line arguments passed to the main() method.
+ * 
+ * @author MrMinimal
+ *
+ */
 public abstract class GameModeCreator{
 	
 	private final static int DISK_INDEX = 0;			// at which position in the arguments the "disk amount" is expected
@@ -10,7 +14,12 @@ public abstract class GameModeCreator{
 		System.err.println("GameModeCreators default constructor should never be called");
 	}
 	
-	// Returns all the settings input via the parameters of the main application
+	/**
+	 * Returns all the settings, input via the parameters of the main application
+	 * 
+	 * @param settings	All the parameters read via the command line. Interesting arguments start at index 0.
+	 * @return	Settings object which holds all the settings for later use ingame
+	 */
 	public static Settings parseSettings(String[] settings){
 		int totalDisks 					= 0;		// not zero in case a disk amount was passed
 		int delay 						= 1;		// default value one second unless set otherwise via arguments

@@ -13,8 +13,8 @@ public class MainGame {
 		
 		// MVC Objects	
 		GameModel 		model;
-		GameView 		view;			// Displays the data if the controller tells it to
-		GameController 	controller;		// Handles the interaction between the data and the GUI
+		GameView 		view;		
+		GameController 	controller;		
 		
 		boolean isAutoPlayMode = (settings.getMode() == Settings.InteractionMode.AUTOPLAY);
 		
