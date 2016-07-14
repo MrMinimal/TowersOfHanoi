@@ -6,6 +6,7 @@ import java.util.Stack;
  * Model part of the MVC design.
  * 
  * @author Tom Langwaldt
+ * @author Leoni Kaiser
  *
  */
 public class GameModel {

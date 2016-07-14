@@ -1,9 +1,13 @@
 /**
- * Holds all data for the game which was passed via command line arguments. 
- * This includes the InteractionMode of the game, 
- * differenced in the Autoplay- and Interactive - Mode, the step delay, the total number of disks in the game and the size of the window.
+ * Holds all data for the game which was passed via command line arguments. This
+ * includes the InteractionMode of the game, differenced in the Autoplay- and
+ * Interactive - Mode, the step delay, the total number of disks in the game and
+ * the size of the window.
  * <p>
- * That class can only be called with arguments, there is no default constructor.
+ * That class can only be called with arguments, there is no default
+ * constructor.
+ * 
+ * @author Leoni Kaiser
  */
 public class Settings {
 
@@ -14,8 +18,8 @@ public class Settings {
 	private static final int ROD_COUNT = 3; // for now only 3, could potentially
 											// set more via settings
 
-	private static final int windowHeight 	= 600;
-	private static final int windowWidth 	= 800;
+	private static final int windowHeight = 600;
+	private static final int windowWidth = 800;
 
 	private InteractionMode mode;
 	private int totalDisks;
@@ -32,13 +36,15 @@ public class Settings {
 	 * Creates settings with specifying the InteractionMode, the number of Disks
 	 * and the step delay for the Autoplay-Mode.
 	 * 
-	 * @param mode the mode the game is played with. Options are AUTOPLAY and
-	 * INTERACTIVE.
+	 * @param mode
+	 *            the mode the game is played with. Options are AUTOPLAY and
+	 *            INTERACTIVE.
 	 * 
-	 * @param totalDisks the number of disks in the game.
+	 * @param totalDisks
+	 *            the number of disks in the game.
 	 * 
-	 * @param stepDelay time how fast the disks should be moved in the
-	 * Autoplay-Mode.
+	 * @param stepDelay
+	 *            time how fast the disks should be moved in the Autoplay-Mode.
 	 */
 	public Settings(InteractionMode mode, int totalDisks, int stepDelay) {
 		this.mode = mode;
@@ -85,12 +91,17 @@ public class Settings {
 	/**
 	 * Returns the total number of Disks in the whole game.
 	 * 
-	 * @return
+	 * @return a value of disks that are in the game
 	 */
 	public int getTotalDisks() {
 		return totalDisks;
 	}
 
+	/**
+	 * Gets the lag of time between the moves at the autoplay mode.
+	 * 
+	 * @return a value that represent the delay of the moves.
+	 */
 	public int getStepDelay() {
 		return stepDelay;
 	}
